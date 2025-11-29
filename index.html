@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Distribuição de Peças — Neon Dashboard</title>
+
+  <!-- Chart.js + datalabels -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+  <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+<!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <main class="app">
+    <header class="topbar">
+      <div class="logo">
+        <span class="neon-text">Produção de peças por hora</span><span class="muted">Ferramenta operacional</span>
+      </div>
+    </header>
+
+    <section class="card main-card">
+      <div class="card-head">
+        <h1>Distribuição de Peças Produzidas</h1>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="total">Quantidade total de peças:</label>
+          <input id="total" type="number" min="1" placeholder="Ex: 300" />
+        </div>
+
+        <div class="field compact">
+          <label for="addExtra">Incluir horário 02h–03h</label>
+          <input id="addExtra" type="checkbox" />
+        </div>
+
+        <div class="field btn-field">
+          <button id="btnCalcular" class="btn-neon">Calcular</button>
+        </div>
+      </div>
+
+      <div id="resultado" class="result" hidden>
+        <div class="stats-row">
+          <div class="stat-card glass">
+            <div class="stat-title">Total distribuído</div>
+            <div id="statTotal" class="stat-value neon-number">0</div>
+            <div class="stat-sub">Peças</div>
+          </div>
+
+          <div class="stat-card glass">
+            <div class="stat-title">Média por horário</div>
+            <div id="statMedia" class="stat-value neon-number">0</div>
+          </div>
+
+          <div class="stat-card glass">
+            <div class="stat-title">Horários</div>
+            <div id="statCount" class="stat-value neon-number">0</div>
+          </div>
+        </div>
+
+        <div class="table-and-chart">
+          <div class="table-wrap glass">
+            <table class="neon-table">
+              <thead>
+                <tr><th>Horário</th><th>Peças</th><th>%</th><th>Progresso</th></tr>
+              </thead>
+              <tbody id="tabelaResultados"></tbody>
+            </table>
+          </div>
+
+          <div class="chart-wrap glass">
+            <canvas id="pizzaChart" aria-label="Gráfico de pizza"></canvas>
+          </div>
+          <p class="chart-note">
+            * Dados baseados em 1 mês de produção padrão monitorada, valores podendo variar.
+            </p>
+
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <small>Design Neon • Feito Para Práticas de Desenvolvimento Web
+
+      </small>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
